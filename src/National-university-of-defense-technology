@@ -1,0 +1,26 @@
+# Clone 这个仓库
+git clone --recursive https://github.com/zotero-chinese/styles.git
+
+# 进入项目目录
+cd styles
+
+# 子模块是必须的，如果在 clone 时没有添加 recursive 选项，需要运行下一行初始化子模块
+git submodule update --init
+
+# 如果是第一次接触 Node.js 或运行后续命令时提示 pnpm 命令不存在，
+# 请执行下一行以安装 pnpm 包管理器
+npm install -g pnpm
+
+# 安装依赖
+pnpm install
+
+# 监听 CSL 文件变化并热更新
+pnpm dev
+
+# 生成所有数据
+pnpm build
+
+# 预览一个 CSL 的结果
+pnpm preview "src/accounting-research/accounting-research.csl"
+# 你也可以直接运行脚本
+tsx ./lib/index.ts "src/accounting-research/accounting-research.csl"
